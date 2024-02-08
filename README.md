@@ -19,7 +19,7 @@ Jupyter notebooks to reproduce figures used in the paper are organized by figure
 
 ## Downloads
 
-CLIPNET models are deposited on [Zenodo](https://zenodo.org/doi/10.5281/zenodo.10408622).  The download is available at [10.5281/zenodo.10597358](https://zenodo.org/doi/10.5281/zenodo.10597358). To preserve directory structure, we packaged the data into tar files, divided roughly by figure/analysis. Here is a brief description of the contents of each tar file:
+Data to reproduce figures and training data are available at [10.5281/zenodo.10597358](https://zenodo.org/doi/10.5281/zenodo.10597358). To preserve directory structure, we packaged the data into tar files, divided roughly by figure/analysis. Here is a brief description of the contents of each tar file:
 
 - `training_data.tar.gz`: Contains processed data used to train the CLIPNET models.
   - `individual_pints_peaks/`: Contains the PINTS peaks for each individual PRO-cap library.
