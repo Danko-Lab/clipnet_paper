@@ -1,1 +1,0 @@
-This is the default download location for all the data dumps from Zenodo. If you don't want them downloading here, just edit the bash commands!
