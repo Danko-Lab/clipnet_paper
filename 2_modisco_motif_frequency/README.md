@@ -36,7 +36,7 @@ TF-MoDISco can then be used to cluster profile and quantity seqlets into motifs.
 ```bash
 output=profile # or quantity
 
-# Calculate TF-MoDISco motifs
+# Calculate TF-MoDISco motifs, up to 1000,000 seqlets, Leiden clustering = 50
 modisco motifs \
     -s /path/to/scratch/all_tss_windows_reference_seq_onehot.npz \
     -a /path/to/scratch/deepshap_scores/mean_across_folds_all_${output}.npz \
