@@ -1,7 +1,9 @@
 # Contents of Zenodo archive of processed CLIPNET data and results
 
-Data to reproduce figures and training data are available at [10.5281/zenodo.10597358](https://zenodo.org/doi/10.5281/zenodo.10597358). To preserve directory structure, we packaged the data into tar files, divided roughly by figure/analysis. Below is a description of the files in each tar file:
+Data to reproduce figures and training data are available at [10.5281/zenodo.10597358](https://zenodo.org/doi/10.5281/zenodo.10597358). To preserve directory structure, we packaged the data into tar files, divided roughly by figure/analysis. Below is a description of the files:
 
+- `procap_library_prefixes.txt`: Prefixes for the PRO-cap libraries (n=67) used to train and evaluate CLIPNET.
+- `procap_to_1kGP_conversion.json`: Lists the individual ID for each PRO-cap library (for extracting genotypes from 1kGP). Note that some libraries were ultimately excluded from CLIPNET, so this file has more than 67 entries.
 - `training_data.tar.gz`: Contains processed data used to train the CLIPNET models.
   - `individual_pints_peaks/`: Contains the PINTS peaks for each individual PRO-cap library.
   - `individual_jittered_windows/`: Contains the jittered (uniformly random, +/- 250bp around center of each peak) 1 kb windows for each individual PRO-cap library.
