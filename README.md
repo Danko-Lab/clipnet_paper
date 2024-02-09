@@ -20,5 +20,3 @@ Jupyter notebooks to reproduce figures used in the paper are organized by figure
 ## Downloads
 
 Data to reproduce figures and training data are available at [10.5281/zenodo.10597358](https://zenodo.org/doi/10.5281/zenodo.10597358). To preserve directory structure, we packaged the data into tar files, divided roughly by figure/analysis. For a description of these files, see the DOWNLOADS_README.md file.
-
-
