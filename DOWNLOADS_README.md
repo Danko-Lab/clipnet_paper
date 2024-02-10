@@ -32,7 +32,8 @@ Data to reproduce figures and training data are available at [10.5281/zenodo.105
   - `mean_across_folds_all_profile_modisco/`: A report of the TF-MoDISco results for the profile contribution scores.
   - `mean_across_folds_all_quantity_modisco/`: A report of the TF-MoDISco results for the quantity contribution scores.
   - `mean_across_folds_all_modisco_positions.h5`: Distribution of TF-MoDISco motif positions around the max TSS for each window.
-- `qtl_analysis`: Contains analysis of both tiQTLs and diQTLs.
+- `qtl_analysis.tar.gz`: Contains the finished QTL analysis (log L2 ref - alt scores). Supporting data are in `qtl_data.tar.gz`.
+- `qtl_data.tar.gz`: Contains analysis of both tiQTLs and diQTLs.
   - `tiqtl/`: Contains the tiQTL analysis.
     - `predictions/`: Contains predictions for each individual centered on each tiQTL.
       - `ensemble_predictions/`: Contains the predictions of the ensemble model. The processed L2 metric is given in the file `tiqtls_l2_scores.csv.gz`
