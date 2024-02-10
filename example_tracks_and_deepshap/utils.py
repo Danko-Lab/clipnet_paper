@@ -38,6 +38,9 @@ def plot_side(arr, ylim=[-2, 2.5], yticks=[0, 2], pic_name=None):
 
 
 def plot_a(ax, base, left_edge, height, color):
+    """
+    Adapted from DeepLIFT visualization code (Shrikumar et al. 2017)
+    """
     a_polygon_coords = [
         np.array(
             [
@@ -78,6 +81,9 @@ def plot_a(ax, base, left_edge, height, color):
 
 
 def plot_c(ax, base, left_edge, height, color):
+    """
+    Adapted from DeepLIFT visualization code (Shrikumar et al. 2017)
+    """
     ax.add_patch(
         matplotlib.patches.Ellipse(
             xy=[left_edge + 0.65, base + 0.5 * height],
@@ -109,6 +115,9 @@ def plot_c(ax, base, left_edge, height, color):
 
 
 def plot_g(ax, base, left_edge, height, color):
+    """
+    Adapted from DeepLIFT visualization code (Shrikumar et al. 2017)
+    """
     ax.add_patch(
         matplotlib.patches.Ellipse(
             xy=[left_edge + 0.65, base + 0.5 * height],
@@ -160,6 +169,9 @@ def plot_g(ax, base, left_edge, height, color):
 
 
 def plot_t(ax, base, left_edge, height, color):
+    """
+    Adapted from DeepLIFT visualization code (Shrikumar et al. 2017)
+    """
     ax.add_patch(
         matplotlib.patches.Rectangle(
             xy=[left_edge + 0.4, base],
@@ -197,6 +209,9 @@ def plot_weights_given_ax(
     colors=default_colors,
     plot_funcs=default_plot_funcs,
 ):
+    """
+    Adapted from DeepLIFT visualization code (Shrikumar et al. 2017)
+    """
     if len(array.shape) == 3:
         array = np.squeeze(array)
     assert len(array.shape) == 2, array.shape
@@ -262,6 +277,9 @@ def plot_weights(
     plot_funcs=default_plot_funcs,
     highlight={},
 ):
+    """
+    Adapted from DeepLIFT visualization code (Shrikumar et al. 2017)
+    """
     fig = plt.figure(figsize=figsize)
     ax = fig.add_subplot(111)
     plot_weights_given_ax(
