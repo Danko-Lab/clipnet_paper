@@ -8,7 +8,11 @@ Data to reproduce figures and training data are available at [10.5281/zenodo.105
   - `individual_pints_peaks/`: Contains the PINTS peaks for each individual PRO-cap library.
   - `individual_jittered_windows/`: Contains the jittered (uniformly random, +/- 250bp around center of each peak) 1 kb windows for each individual PRO-cap library.
   - `processed_data/`: Contains the processed data used to train the models, including the individualized sequences and PRO-cap signal (RPM normalized). Packaged as npz arrays. Data were concatenated across libraries, then split into the data folds described in `processed_data/data_fold_assignments.csv.gz`. We note that the PRO-cap data are structured as N x 2000 arrays (1000 bp pl strand, 1000 bp mn strand). The sequence data are structured as N x 1000 x 4 arrays (N = number of sequences, 1000 = sequence length, 4 = two-hot encoding of sequences).
-- `evaluation_data.tar.gz`: Contains data and predictions used to evaluate the performance of the CLIPNET models. The calculated evaluation metrics are included in `evaluation_metric.tar.gz`.
+- `evaluation_metric.tar.gz`: Contains the evaluation metrics for the CLIPNET models. Supporting data are in `evaluation_data.tar.gz`.
+  - `ensemble_test/`: Contains the evaluation metrics for the ensemble model on the complete hold out data set (fold 0).
+  - `individual_test/`: Contains the evaluation metrics for the model folds on the individual model hold out folds (model 1 used fold 1 as a hold out, model 2 used fold 2, etc).
+  - `pos_neg_bounds/`: Contains the positive and negative bounds for the track correlation metric. Positive bound is biological replicates (n=9), negative bound is constructed by comparing the average PRO-cap track against individual tracks.
+- `evaluation_data.tar.gz`: Contains data and predictions used to evaluate the performance of the CLIPNET models.
   - `fixed_uniq_windows.bed.gz`: A fixed set of 48,058 1 kb windows used to evaluate the models. We selected PRO-cap peaks that were present in at least 60 of the 67 libraries, then selected 1 kb windows around each of them (with 250 bp jittering).
   - `processed_data/`: Contains the processed data used to evaluate the models.
     - `procap/`: Contains the processed PRO-cap signal (csv) for each data fold. Contains both concatenated and individualized data.
@@ -16,10 +20,6 @@ Data to reproduce figures and training data are available at [10.5281/zenodo.105
   - `predictions/`: Contains the predictions of the CLIPNET models on the fixed set of 1 kb windows.
     - `ensemble_test`: Contains the predictions of the ensemble model and of model folds on the complete hold out data set (fold 0).
     - `individual_test`: Contains the predictions of the model folds on the individual model hold out folds (model 1 used fold 1 as a hold out, model 2 used fold 2, etc).
-- `evaluation_metric.tar.gz`: Contains the evaluation metrics for the CLIPNET models.
-  - `ensemble_test/`: Contains the evaluation metrics for the ensemble model on the complete hold out data set (fold 0).
-  - `individual_test/`: Contains the evaluation metrics for the model folds on the individual model hold out folds (model 1 used fold 1 as a hold out, model 2 used fold 2, etc).
-  - `pos_neg_bounds/`: Contains the positive and negative bounds for the track correlation metric. Positive bound is biological replicates (n=9), negative bound is constructed by comparing the average PRO-cap track against individual tracks.
 - `deepshap_scores.tar.gz`: Contains DeepSHAP contribution scores.
   - `merged_windows_all.bed.gz`: A nonredundant set of 212,777 windows around PRO-cap peaks (union across all libraries) used for calculating DeepSHAP scores.
   - `all_tss_windows_reference_seq.fna.gz`: The reference (hg38) sequence for the windows in `merged_windows_all.bed.gz`.
