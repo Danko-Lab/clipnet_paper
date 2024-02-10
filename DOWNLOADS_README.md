@@ -36,8 +36,8 @@ Data to reproduce figures and training data are available at [10.5281/zenodo.105
 - `qtl_data.tar.gz`: Contains analysis of both tiQTLs and diQTLs.
   - `tiqtl/`: Contains the tiQTL analysis.
     - `predictions/`: Contains predictions for each individual centered on each tiQTL.
-      - `ensemble_predictions/`: Contains the predictions of the ensemble model. The processed L2 metric is given in the file `tiqtls_l2_scores.csv.gz`
-      - `individual_predictions/`: Contains the predictions of the individual models. The processed L2 metric is given in the file `tiqtls_l2_scores.csv.gz`
+      - `ensemble_predictions/`: Contains the predictions of the ensemble model.
+      - `individual_predictions/`: Contains the predictions of the individual models.
     - `tiQTL_snps.bed.gz`: The SNPs used for the tiQTL analysis (note that we dropped multiallelic SNPs).
     - `tiqtl_windows.bed.gz`: The windows used for the tiQTL analysis.
   - `diqtl/`: Contains the diQTL analysis. Identical structure to `tiqtl/`.
