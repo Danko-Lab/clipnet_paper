@@ -2,6 +2,7 @@ astropy
 bioconductor-seqlogo
 biopython
 cython
+deeplift
 h5py
 joblib
 jupyter
