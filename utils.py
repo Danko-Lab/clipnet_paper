@@ -37,6 +37,33 @@ def plot_side(arr, ylim=[-2, 2.5], yticks=[0, 2], pic_name=None):
         plt.close()
 
 
+def plot_side_stacked(
+    arr0, arr1, ylim=[-1, 1], yticks=[0, 1], xticks=[], pic_name=None
+):
+    assert arr0.shape[0] % 2 == 0, "arr must have even length."
+    midpoint = int(arr0.shape[0] / 2)
+    pl0 = arr0[:midpoint]
+    mn0 = arr0[midpoint:]
+    pl1 = arr1[:midpoint]
+    mn1 = arr1[midpoint:]
+    plt.bar(range(pl0.shape[0]), pl0, width=2, color="tomato", alpha=0.5)
+    plt.bar(range(mn0.shape[0]), -mn0, width=2, color="tomato", alpha=0.5)
+    plt.bar(range(pl1.shape[0]), pl1, width=2, color="grey", alpha=0.5)
+    plt.bar(range(mn1.shape[0]), -mn1, width=2, color="grey", alpha=0.5)
+    axes = plt.gca()
+    axes.set_ylim(ylim)
+    axes.set_yticks(yticks)
+    axes.set_xticks(xticks)
+    axes.spines[["right", "top", "bottom"]].set_visible(False)
+    plt.xlim(-0.5, pl0.shape[0] - 0.5)
+
+    if pic_name is None:
+        plt.show()
+    else:
+        plt.savefig(pic_name, transparent=True)
+        plt.close()
+
+
 def plot_a(ax, base, left_edge, height, color):
     """
     Adapted from DeepLIFT visualization code (Shrikumar et al. 2017)
