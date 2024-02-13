@@ -16,17 +16,17 @@ Then, run the `calculate_deepshap_scores.py` on script from our [CLIPNET](https:
 ```bash
 python calculate_deepshap_scores.py \
     /path/to/scratch/deepshap_scores/all_tss_windows_reference_seq.fna.gz \
-    /path/to/scratch/deepshap_scores/all_tss_windows_deepshap_profile_0.npz \
+    /path/to/scratch/deepshap_scores/all_tss_windows_deepshap_profile_1.npz \
     /path/to/scratch/all_tss_windows_reference_seq_onehot.npz \
-    --model_fp /path/to/models/fold_0.h5 \
+    --model_fp /path/to/models/fold_1.h5 \
     --mode profile \
     --gpu
 
 python calculate_deepshap_scores.py \
     /path/to/scratch/deepshap_scores/all_tss_windows_reference_seq.fna.gz \
-    /path/to/scratch/deepshap_scores/all_tss_windows_deepshap_quantity_0.npz \
+    /path/to/scratch/deepshap_scores/all_tss_windows_deepshap_quantity_1.npz \
     /path/to/scratch/all_tss_windows_reference_seq_onehot.npz \
-    --model_fp /path/to/models/fold_0.h5 \
+    --model_fp /path/to/models/fold_1.h5 \
     --mode quantity \
     --gpu
 ```
