@@ -15,7 +15,7 @@ pip install -r requirements.txt
 
 ## Code/Notebooks
 
-Jupyter notebooks to reproduce figures used in the paper are organized by analysis type. While we provide some scripts/instructions to calculate predictions and feature interpretations (we haven't written many of these up, so please just raise an issue if you want clarification on something), many of these calculations will be very time/resource-intensive. As a result, for the purposes of reproducing the figures in the paper, we assume precalculated predictions and feature interpretations, which we provide as specified below.
+Jupyter notebooks to reproduce figures used in the paper are organized by analysis type. While we provide some scripts/instructions to calculate predictions and feature interpretations (we haven't written many of these up, so please just raise an issue if you want clarification on something), many of these calculations will be very time/resource-intensive. As a result, for the purposes of reproducing the figures in the paper, we assume precalculated predictions and feature interpretations, which we have archived on Zenodo.
 
 ## Downloads
 
