@@ -13,7 +13,6 @@ notebook
 numpy
 pandas
 pip
-ptitprince
 python
 pybedtools
 scipy
