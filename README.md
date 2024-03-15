@@ -1,6 +1,6 @@
 # CLIPNET paper
 
- Scripts and notebooks to reproduce figures in the CLIPNET paper (preprint [here](https://www.biorxiv.org/content/10.1101/2024.03.13.583868v1)). Code for generating new predictions and feature interpretions with CLIPNET is available in a [separate repo](https://github.com/Danko-Lab/clipnet/).
+ Scripts and notebooks to reproduce figures in the CLIPNET paper (preprint [here](https://www.biorxiv.org/content/10.1101/2024.03.13.583868)). Code for generating new predictions and feature interpretions with CLIPNET is available in a [separate repo](https://github.com/Danko-Lab/clipnet/).
 
 ## Install dependencies
 
