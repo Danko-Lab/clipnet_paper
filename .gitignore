@@ -3,6 +3,7 @@ myc_promoter_analysis/
 mutagenesis/tata_ism_shuffle_plots.ipynb
 zenodo_upload_curl.sh
 test.py
+*/test.ipynb
 .DS_Store
 
 # Byte-compiled / optimized / DLL files
