@@ -14,8 +14,9 @@ numpy
 pandas
 pip
 python
-pybedtools
+pyranges
 scipy
 seaborn
 seqlogo
+tangermeme
 tqdm
