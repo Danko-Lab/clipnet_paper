@@ -11,7 +11,7 @@ Data to reproduce figures and training data are available at [10.5281/zenodo.105
 - `evaluation_metric.tar.gz`: Contains the evaluation metrics for the CLIPNET models. Supporting data are in `evaluation_data.tar.gz`.
   - `ensemble_test/`: Contains the evaluation metrics for the individual models on the complete hold out data set (fold 0).
   - `individual_test/`: Contains the evaluation metrics for the model folds on the individual model hold out folds (model 1 used fold 1 as a hold out, model 2 used fold 2, etc).
-  - `fixed_uniq_windows.bed.gz`: A fixed set of 48,058 1 kb windows used to evaluate the models. We selected PRO-cap peaks that were present in at least 60 of the 67 libraries, then selected 1 kb windows around each of them (with 250 bp jittering).
+  - `fixed_uniq_windows.bed.gz`: A fixed set of 1 kb windows used to evaluate the models. We selected PRO-cap peaks that were present in at least 20 of the 67 libraries, then selected 1 kb windows around each of them (with 250 bp jittering).
   - `mean_predictor_corrs.csv.gz`: Correlation between an averaged PRO-cap track (across loci) against individual tracks.
   - `replicate_pearsons.csv.gz`: Correlation between tracks from isogenic replicates (n=9).
   - `clipnet_test_predictions.h5`: Prediction of the ensembled model on data fold 0.
