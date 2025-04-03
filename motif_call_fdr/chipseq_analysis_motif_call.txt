@@ -1,0 +1,160 @@
+# Download ChIP-seq tracks from ENCODE
+SP1: https://www.encodeproject.org/files/ENCFF194VQV/@@download/ENCFF194VQV.bigWig
+IRF4: https://www.encodeproject.org/files/ENCFF167KPF/@@download/ENCFF167KPF.bigWig
+YY1: https://www.encodeproject.org/files/ENCFF722WRN/@@download/ENCFF722WRN.bigWig
+NRF1: https://www.encodeproject.org/files/ENCFF050XKK/@@download/ENCFF050XKK.bigWig
+CTCF: https://www.encodeproject.org/files/ENCFF232FCT/@@download/ENCFF232FCT.bigWig
+ETS1: https://www.encodeproject.org/files/ENCFF686FAA/@@download/ENCFF686FAA.bigWig
+POU2F2: https://www.encodeproject.org/files/ENCFF803HIP/@@download/ENCFF803HIP.bigWig
+ELK1: https://www.encodeproject.org/files/ENCFF385JTY/@@download/ENCFF385JTY.bigWig
+NFYA: https://www.encodeproject.org/files/ENCFF559MJP/@@download/ENCFF559MJP.bigWig
+
+# Get motif-specific bed files
+zcat quantity_annotated_seqlets.bed.gz | grep "SP/KLF" | cut -f1-3 | uniq > quantity_annotated_seqlets_SPKLF.bed
+zcat quantity_annotated_seqlets.bed.gz | grep "IRF" | cut -f1-3 | uniq > quantity_annotated_seqlets_IRF.bed
+zcat quantity_annotated_seqlets.bed.gz | grep "ETS" | cut -f1-3 | uniq > quantity_annotated_seqlets_ETS.bed
+zcat quantity_annotated_seqlets.bed.gz | grep "NRF1" | cut -f1-3 | uniq > quantity_annotated_seqlets_NRF1.bed
+zcat quantity_annotated_seqlets.bed.gz | grep "YY1" | cut -f1-3 | uniq > quantity_annotated_seqlets_YY1.bed
+zcat quantity_annotated_seqlets.bed.gz | grep "CTCF" | cut -f1-3 | uniq > quantity_annotated_seqlets_CTCF.bed
+zcat quantity_annotated_seqlets.bed.gz | grep "POU" | cut -f1-3 | uniq > quantity_annotated_seqlets_POU.bed
+zcat quantity_annotated_seqlets.bed.gz | grep "NFY" | cut -f1-3 | uniq > quantity_annotated_seqlets_NFY.bed
+
+# Run computeMatrix (deeptools). bw files from ENCODE
+computeMatrix reference-point \
+    --referencePoint center \
+    -b 1000 -a 1000 \
+    -R quantity_annotated_seqlets_SPKLF.bed \
+    -S ../../data/lcl/sp1.bw \
+    -o sp1_quantity_matrix.gz
+computeMatrix reference-point \
+    --referencePoint center \
+    -b 1000 -a 1000 \
+    -R quantity_annotated_seqlets_IRF.bed \
+    -S ../../data/lcl/irf4.bw \
+    -o irf4_quantity_matrix.gz
+computeMatrix reference-point \
+    --referencePoint center \
+    -b 1000 -a 1000 \
+    -R quantity_annotated_seqlets_ETS.bed \
+    -S ../../data/lcl/elk1.bw \
+    -o elk1_quantity_matrix.gz
+computeMatrix reference-point \
+    --referencePoint center \
+    -b 1000 -a 1000 \
+    -R quantity_annotated_seqlets_ETS.bed \
+    -S ../../data/lcl/ets1.bw \
+    -o ets1_quantity_matrix.gz
+computeMatrix reference-point \
+    --referencePoint center \
+    -b 1000 -a 1000 \
+    -R quantity_annotated_seqlets_YY1.bed \
+    -S ../../data/lcl/yy1.bw \
+    -o yy1_quantity_matrix.gz
+computeMatrix reference-point \
+    --referencePoint center \
+    -b 1000 -a 1000 \
+    -R quantity_annotated_seqlets_NRF1.bed \
+    -S ../../data/lcl/nrf1.bw \
+    -o nrf1_quantity_matrix.gz
+computeMatrix reference-point \
+    --referencePoint center \
+    -b 1000 -a 1000 \
+    -R quantity_annotated_seqlets_NFY.bed \
+    -S ../../data/lcl/nfya.bw \
+    -o nfya_quantity_matrix.gz
+computeMatrix reference-point \
+    --referencePoint center \
+    -b 1000 -a 1000 \
+    -R quantity_annotated_seqlets_CTCF.bed \
+    -S ../../data/lcl/ctcf.bw \
+    -o ctcf_quantity_matrix.gz
+computeMatrix reference-point \
+    --referencePoint center \
+    -b 1000 -a 1000 \
+    -R quantity_annotated_seqlets_POU.bed \
+    -S ../../data/lcl/pou2f2.bw \
+    -o pou2f2_quantity_matrix.gz
+
+# Plot heatmap + metaplot
+plotHeatmap \
+    -m irf4_quantity_matrix.gz \
+    -out irf4_quantity_heatmap.pdf \
+    --colorMap RdBu 
+plotHeatmap \
+    -m sp1_quantity_matrix.gz \
+    -out sp1_quantity_heatmap.pdf \
+    --colorMap RdBu 
+plotHeatmap \
+    -m yy1_quantity_matrix.gz \
+    -out yy1_quantity_heatmap.pdf \
+    --colorMap RdBu 
+plotHeatmap \
+    -m elk1_quantity_matrix.gz \
+    -out elk1_quantity_heatmap.pdf \
+    --colorMap RdBu 
+plotHeatmap \
+    -m pou2f2_quantity_matrix.gz \
+    -out pou2f2_quantity_heatmap.pdf \
+    --colorMap RdBu 
+plotHeatmap \
+    -m ets1_quantity_matrix.gz \
+    -out ets1_quantity_heatmap.pdf \
+    --colorMap RdBu 
+plotHeatmap \
+    -m nfya_quantity_matrix.gz \
+    -out nfya_quantity_heatmap.pdf \
+    --colorMap RdBu 
+plotHeatmap \
+    -m ctcf_quantity_matrix.gz \
+    -out ctcf_quantity_heatmap.pdf \
+    --colorMap RdBu 
+plotHeatmap \
+    -m nrf1_quantity_matrix.gz \
+    -out nrf1_quantity_heatmap.pdf \
+    --colorMap RdBu 
+
+# Extend bed files out to 1kb
+cat quantity_annotated_seqlets_IRF.bed | \
+    awk 'OFS="\t" {OFMT="%d"; print $1, ($2+$3)/2 - 500, ($2+$3)/2 + 500}' | \
+    sort-bed - | uniq \
+    > quantity_annotated_seqlets_IRF_1kb.bed
+cat quantity_annotated_seqlets_SPKLF.bed | \
+    awk 'OFS="\t" {OFMT="%d"; print $1, ($2+$3)/2 - 500, ($2+$3)/2 + 500}' | \
+    sort-bed - | uniq \
+    > quantity_annotated_seqlets_SPKLF_1kb.bed
+
+# Extract sequences
+bedtools getfasta \
+    -fi ../../data/hg38.fa \
+    -bed quantity_annotated_seqlets_IRF_1kb.bed \
+    -fo quantity_annotated_seqlets_IRF_1kb.fa
+bedtools getfasta \
+    -fi ../../data/hg38.fa \
+    -bed quantity_annotated_seqlets_SPKLF_1kb.bed \
+    -fo quantity_annotated_seqlets_SPKLF_1kb.fa
+
+# Calculate attributions on WT sequence files
+clipnet attribute \
+    -f quantity_annotated_seqlets_SPKLF_1kb.fa \
+    -o quantity_annotated_seqlets_SPKLF_1kb_quantity_shap.npz \
+    -m ../../clipnet/clipnet_models/ \
+    -c -v=
+clipnet attribute \
+    -f quantity_annotated_seqlets_IRF_1kb.fa \
+    -o quantity_annotated_seqlets_IRF_1kb_quantity_shap.npz \
+    -m ../../clipnet/clipnet_models/ \
+    -c -v
+
+# SHUFFLE MOTIFS w/ dinucleotide_shuffle_whole.py
+
+# Calculate attributions on shuffled sequences
+clipnet attribute \
+    -f quantity_annotated_seqlets_SPKLF_1kb_shuf.fa \
+    -o quantity_annotated_seqlets_SPKLF_1kb_shuf_quantity_shap.npz \
+    -m ../../clipnet/clipnet_models/ \
+    -c -v
+clipnet attribute \
+    -f quantity_annotated_seqlets_IRF_1kb_shuf.fa \
+    -o quantity_annotated_seqlets_IRF_1kb_shuf_quantity_shap.npz \
+    -m ../../clipnet/clipnet_models/ \
+    -c -v
