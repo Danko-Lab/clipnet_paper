@@ -1,5 +1,5 @@
 astropy
-bioconductor-seqlogo
+#bioconductor-seqlogo
 biopython
 cython
 deeplift
@@ -10,10 +10,10 @@ jupyterlab
 matplotlib
 mpl-scatter-density
 notebook
-numpy
+numpy==1.26.2
 pandas
 pip
-python
+#python
 pyranges
 scipy
 seaborn

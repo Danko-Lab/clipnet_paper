@@ -1,0 +1,114 @@
+computeMatrix reference-point \
+    --referencePoint center \
+    -b 1000 -a 1000 \
+    -R attr/lcl/seqlets/quantity_pos_patterns_8_uniq.bed \
+    -S data/lcl/irf4.bw \
+    -o attr/lcl/seqlets/irf4_matrix.gz
+
+computeMatrix reference-point \
+    --referencePoint center \
+    -b 1000 -a 1000 \
+    -R attr/lcl/seqlets/quantity_pos_patterns_1_uniq.bed \
+    -S data/lcl/sp1.bw \
+    -o attr/lcl/seqlets/sp1_matrix.gz
+
+plotHeatmap \
+    -m attr/lcl/seqlets/irf4_matrix.gz \
+    -out attr/lcl/seqlets/irf4_heatmap.pdf \
+    --colorMap RdBu
+plotHeatmap \
+    -m attr/lcl/seqlets/sp1_matrix.gz \
+    -out attr/lcl/seqlets/sp1_heatmap.pdf \
+    --colorMap RdBu
+
+cat attr/lcl/seqlets/quantity_pos_patterns_1_uniq.bed | \
+    awk 'OFS="\t" {print $1, $2-485, $3+485}' \
+    > attr/lcl/seqlets/quantity_pos_patterns_1_uniq_1kb.bed
+cat attr/lcl/seqlets/quantity_pos_patterns_8_uniq.bed | \
+    awk 'OFS="\t" {print $1, $2-485, $3+485}' \
+    > attr/lcl/seqlets/quantity_pos_patterns_8_uniq_1kb.bed
+
+bedtools getfasta \
+    -fi data/hg38.fa \
+    -bed attr/lcl/seqlets/quantity_pos_patterns_8_uniq_1kb.bed \
+    -fo attr/lcl/seqlets/quantity_pos_patterns_8_uniq_1kb.fa
+bedtools getfasta \
+    -fi data/hg38.fa \
+    -bed attr/lcl/seqlets/quantity_pos_patterns_1_uniq_1kb.bed \
+    -fo attr/lcl/seqlets/quantity_pos_patterns_1_uniq_1kb.fa
+
+clipnet attribute \
+    -f attr/lcl/seqlets/quantity_pos_patterns_1_uniq_1kb.fa \
+    -o attr/lcl/seqlets/quantity_pos_patterns_1_uniq_1kb_quantity_shap.npz \
+    -m clipnet/clipnet_models/ \
+    -c -v
+clipnet attribute \
+    -f attr/lcl/seqlets/quantity_pos_patterns_1_uniq_1kb_whole_shuf.fa \
+    -o attr/lcl/seqlets/quantity_pos_patterns_1_uniq_1kb_whole_shuf_quantity_shap.npz \
+    -m clipnet/clipnet_models/ \
+    -c -v
+clipnet attribute \
+    -f attr/lcl/seqlets/quantity_pos_patterns_1_uniq_1kb_motif_shuf.fa \
+    -o attr/lcl/seqlets/quantity_pos_patterns_1_uniq_1kb_motif_shuf_quantity_shap.npz \
+    -m clipnet/clipnet_models/ \
+    -c -v
+
+clipnet attribute \
+    -f attr/lcl/seqlets/quantity_pos_patterns_1_uniq_1kb_whole_shuf_1.fa \
+    -o attr/lcl/seqlets/quantity_pos_patterns_1_uniq_1kb_whole_shuf_1_quantity_shap.npz \
+    -m clipnet/clipnet_models/ \
+    -c -v
+clipnet attribute \
+    -f attr/lcl/seqlets/quantity_pos_patterns_1_uniq_1kb_motif_shuf_1.fa \
+    -o attr/lcl/seqlets/quantity_pos_patterns_1_uniq_1kb_motif_shuf_1_quantity_shap.npz \
+    -m clipnet/clipnet_models/ \
+    -c -v
+
+clipnet attribute \
+    -f attr/lcl/seqlets/quantity_pos_patterns_1_uniq_1kb_whole_shuf_2.fa \
+    -o attr/lcl/seqlets/quantity_pos_patterns_1_uniq_1kb_whole_shuf_2_quantity_shap.npz \
+    -m clipnet/clipnet_models/ \
+    -c -v
+clipnet attribute \
+    -f attr/lcl/seqlets/quantity_pos_patterns_1_uniq_1kb_motif_shuf_2.fa \
+    -o attr/lcl/seqlets/quantity_pos_patterns_1_uniq_1kb_motif_shuf_2_quantity_shap.npz \
+    -m clipnet/clipnet_models/ \
+    -c -v
+
+clipnet attribute \
+    -f attr/lcl/seqlets/quantity_pos_patterns_8_uniq_1kb.fa \
+    -o attr/lcl/seqlets/quantity_pos_patterns_8_uniq_1kb_quantity_shap.npz \
+    -m clipnet/clipnet_models/ \
+    -c -v
+clipnet attribute \
+    -f attr/lcl/seqlets/quantity_pos_patterns_8_uniq_1kb_whole_shuf.fa \
+    -o attr/lcl/seqlets/quantity_pos_patterns_8_uniq_1kb_whole_shuf_quantity_shap.npz \
+    -m clipnet/clipnet_models/ \
+    -c -v
+clipnet attribute \
+    -f attr/lcl/seqlets/quantity_pos_patterns_8_uniq_1kb_motif_shuf.fa \
+    -o attr/lcl/seqlets/quantity_pos_patterns_8_uniq_1kb_motif_shuf_quantity_shap.npz \
+    -m clipnet/clipnet_models/ \
+    -c -v
+
+clipnet attribute \
+    -f attr/lcl/seqlets/quantity_pos_patterns_8_uniq_1kb_whole_shuf_1.fa \
+    -o attr/lcl/seqlets/quantity_pos_patterns_8_uniq_1kb_whole_shuf_1_quantity_shap.npz \
+    -m clipnet/clipnet_models/ \
+    -c -v
+clipnet attribute \
+    -f attr/lcl/seqlets/quantity_pos_patterns_8_uniq_1kb_motif_shuf_1.fa \
+    -o attr/lcl/seqlets/quantity_pos_patterns_8_uniq_1kb_motif_shuf_1_quantity_shap.npz \
+    -m clipnet/clipnet_models/ \
+    -c -v
+
+clipnet attribute \
+    -f attr/lcl/seqlets/quantity_pos_patterns_8_uniq_1kb_whole_shuf_2.fa \
+    -o attr/lcl/seqlets/quantity_pos_patterns_8_uniq_1kb_whole_shuf_2_quantity_shap.npz \
+    -m clipnet/clipnet_models/ \
+    -c -v
+clipnet attribute \
+    -f attr/lcl/seqlets/quantity_pos_patterns_8_uniq_1kb_motif_shuf_2.fa \
+    -o attr/lcl/seqlets/quantity_pos_patterns_8_uniq_1kb_motif_shuf_2_quantity_shap.npz \
+    -m clipnet/clipnet_models/ \
+    -c -v
