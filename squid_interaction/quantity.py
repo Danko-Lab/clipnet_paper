@@ -54,13 +54,15 @@ alphabet = ["A", "C", "G", "T"]
 x = squid.utils.seq2oh(seq, alphabet)
 
 # define mutagenesis window for sequence
-# 500-600 for EH38E3485200
+# 555-600 for EH38E3485200
 # 500-600 for IFNAR2
 # 310-410 for INTS6
 # 460-540 for IRF4
 # 390-510 for IRF7
 mut_windows = {
-    "EH38E3485200": [500, 600],
+    "EH38E3485200": [555, 600],
+    "EH38E2695794": [420, 590],
+    "EH38E2107427": [475, 575],
     "ifnar2_prom": [480, 580],
     "ints6_prom": [310, 410],
     "irf4_prom": [460, 540],
@@ -145,7 +147,7 @@ for linearity in ["linear", "nonlinear"]:
     np.savez_compressed(f"{name}_quantity_{linearity}_mave_nn.npz", *params)
 
 # load surrogate model and mave_df (reload session to avoid VRAM overflow)
-for name in ["ifnar2_prom", "ints6_prom", "irf4_prom", "irf7_prom"]:
+for name in ["EH38E3485200"]:#["ifnar2_prom", "ints6_prom", "irf4_prom", "irf7_prom"]:
     for linearity in ["linear", "nonlinear"]:
         # load surrogate model and mave_df
         surrogate = mavenn.load(f"{name}_quantity_{linearity}_mave_nn")
